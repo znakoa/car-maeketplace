@@ -12,12 +12,13 @@ import {Button} from '@/components/ui/button'
 import {useEffect, useState} from 'react'
 import {db} from './../../configs'
 import {CarImage, CarListing} from './../../configs/schema'
-import Uploadimages from './components/Uploadimages'
+
 import {useNavigate, useSearchParams} from 'react-router-dom'
 import {useUser} from '@clerk/clerk-react'
 import dayjs from 'dayjs'
 import {eq} from "drizzle-orm";
 import Service from "@/Shared/Service";
+import Uploadimages from "@/add-listing/components/UploadImages.jsx";
 
 // import { toast } from '@/components/ui/sonner'
 
