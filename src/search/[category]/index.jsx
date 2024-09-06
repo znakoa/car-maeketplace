@@ -18,7 +18,7 @@ const SarchByCategoty = () => {
     }, [])
 
     const GetCarList = async () => {
-        const result = await db.select().from(CarListing).innerJoin(CarImage, eq(CarListing.id, CarImage.carListingId)).where(eq(CarListing.tagline, category))
+        const result = await db.select().from(CarListing).innerJoin(CarImage, eq(CarListing.id, CarImage.carListingId)).where(eq(CarListing.category, category))
         const response = Service.FormatResult(result)
         console.log(response)
         setCarList(response)
