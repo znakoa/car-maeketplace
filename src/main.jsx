@@ -11,7 +11,7 @@ import AddListing from './add-listing'
 import SarchByCategoty from '@/search/[category]/index.jsx'
 import SarchByOptions from '@/search/index.jsx'
 import ListDetails from '@/list-details/[id]/index.jsx'
-// import { Toaster } from './components/ui/sonner'
+import { Toaster } from './components/ui/sonner'
 
 const router = createBrowserRouter(
   [
@@ -50,15 +50,19 @@ const router = createBrowserRouter(
 )
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
-
+const AFTERSIGNOUTURL = import.meta.VITE_SIGN_OUT_URL
+const SIGNINFALLBACKREDIRECTURL = import.meta.VITE_FALLBACK_REDIRECT_URL
 if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key')
 }
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      afterSignOutUrl={AFTERSIGNOUTURL}
+      signInFallbackRedirectUrl={SIGNINFALLBACKREDIRECTURL}>
       <RouterProvider router={router} />
-      {/* <Toaster /> */}
+      <Toaster />
     </ClerkProvider>
   </StrictMode>
 )

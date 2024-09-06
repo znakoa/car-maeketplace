@@ -19,7 +19,7 @@ function CarItem({car}) {
                     alt={car?.name}
                     width={'100%'}
                     height={250}
-                    className="rounded-xl h-[180px] object-cover"
+                    className="rounded-xl h-[260px] object-cover"
                 />
                 <div className="p-4">
                     <h2 className="font-bold text-black text-lg mb-2">{car?.listingTitle}</h2>
@@ -27,20 +27,20 @@ function CarItem({car}) {
                     <div className="grid grid-cols-3 mt-5">
                         <div className="flex flex-col  items-center">
                             <LuFuel className="text-lg mb-2"/>
-                            <h1>{car.brand} Miles</h1>
+                            <h1>{car?.mileage} Miles</h1>
                         </div>
                         <div className="flex flex-col items-center">
                             <SlSpeedometer className="text-lg mb-2"/>
-                            <h1>{car.mileage}</h1>
+                            <h1>{car?.fuelType}</h1>
                         </div>
                         <div className="flex flex-col items-center">
                             <GiGearStickPattern className="text-lg mb-2"/>
-                            <h1>{car.mileages}</h1>
+                            <h1>{car?.transmission}</h1>
                         </div>
                     </div>
                     <Separator className="my-2"/>
                     <div className="flex items-center justify-between">
-                        <h2 className="font-bold text-xl">${car.price}</h2>
+                        <h2 className="font-bold text-xl">${car?.sellingPrice}</h2>
                         <h2 className="text-primary text-sm flex gap-2 items-center">
                             View Details
                             <MdOpenInNew/>

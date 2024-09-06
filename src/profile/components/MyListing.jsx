@@ -8,6 +8,19 @@ import {useEffect, useState} from "react";
 import Service from "@/Shared/Service";
 import CarItem from "@/components/CarItem.jsx";
 import { FaTrashAlt } from "react-icons/fa";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
+
 function MyListing() {
 
     const {user} = useUser()
@@ -19,8 +32,16 @@ function MyListing() {
             .orderBy(desc(CarListing.id))
 
       const finalResult =  Service.FormatResult(result)
-        console.log(finalResult)
+
         setCarList(finalResult)
+
+    }
+    // 删除方法
+    const DeleteCarListitem = async (id) => {
+        await db.delete(CarImage).where(eq(CarImage.carListingId, id))
+        await db.delete(CarListing).where(eq(CarListing.id, id))
+
+        GetUserCarListing()
 
     }
     useEffect(() => {
@@ -49,7 +70,25 @@ function MyListing() {
                                   <Button variant="outline" className='w-full'>Edit</Button>
                               </Link>
 
-                              <Button variant='destructive' ><FaTrashAlt /></Button>
+
+                              <AlertDialog>
+                                  <AlertDialogTrigger>
+                                      <Button variant='destructive'  ><FaTrashAlt /></Button>
+                                  </AlertDialogTrigger>
+                                  <AlertDialogContent>
+                                      <AlertDialogHeader>
+                                          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                          <AlertDialogDescription>
+                                              This action cannot be undone. This will permanently delete your account
+                                              and remove your data from our servers.
+                                          </AlertDialogDescription>
+                                      </AlertDialogHeader>
+                                      <AlertDialogFooter>
+                                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                          <AlertDialogAction onClick={() => DeleteCarListitem(item?.id)}>Continue</AlertDialogAction>
+                                      </AlertDialogFooter>
+                                  </AlertDialogContent>
+                              </AlertDialog>
                           </div>
                       </div>
                   ))

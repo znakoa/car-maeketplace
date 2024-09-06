@@ -28,9 +28,14 @@ const FormatResult = (result) => {
 };
 
 
-const CreateSendBirdUser = (user) => {
+const CreateSendBirdUser=(userId,nickName,profileUrl) => {
 
-    return axios.post(`https://api-${application_id}.sendbird.com/v3/users`, user,{
+    return axios.post(`https://api-${application_id}.sendbird.com/v3/users`, {
+        user_id:userId,
+        nickname:nickName,
+        profile_url:profileUrl,
+        issue_access_token:false
+    },{
         headers: {
             'Content-Type': 'application/json',
             'Api-Token': api_token
@@ -38,8 +43,13 @@ const CreateSendBirdUser = (user) => {
     })
 }
 
-const CreateSendBirdChannel = (channel) => {
-    return axios.post(`https://api-${application_id}.sendbird.com/v3/group_channels`, channel,{
+const CreateSendBirdChannel=(users,title) => {
+    return axios.post(`https://api-${application_id}.sendbird.com/v3/group_channels`, {
+        user_ids:users,
+        is_distinct:true,
+        name:title,
+        operator_ids:[users[0]]
+    },{
         headers: {
             'Content-Type': 'application/json',
             'Api-Token': api_token

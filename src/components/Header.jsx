@@ -9,7 +9,7 @@ function Header() {
   return (
     <div className="flex justify-between items-center shadow-sm p-5">
       <Link to={'/'}>
-        <img src={logo} alt='' width={150} height={100} />
+        <img src={logo} alt="" width={150} height={100} />
       </Link>
       <ul className="hidden md:flex gap-16">
         <li className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-pretty">
@@ -34,9 +34,7 @@ function Header() {
           </Link>
         </div>
       ) : (
-        <SignInButton
-          mode="modal"
-          fallbackRedirectUrl="https://znakoa.github.io/car-maeketplace/">
+        <SignInButton mode="modal">
           <Button>Submit Listing</Button>
         </SignInButton>
       )}

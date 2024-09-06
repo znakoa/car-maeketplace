@@ -35,9 +35,7 @@ function Inbox() {
                             }}
                            channelListQueryParams={{
                                includeEmpty: true
-                           }}
-
-                            />
+                           }}/>
                         </div>
                         <div className={'md:col-span-2 shadow-lg'}>
                             <GroupChannel channelUrl={channelUrl} />
