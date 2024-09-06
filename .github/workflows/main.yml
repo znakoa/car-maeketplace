@@ -18,8 +18,6 @@ jobs:
       - name: Install and Build   # 安装依赖、打包，如果提前已打包好无需这一步
         run: |
           npm install
-          npm run db:push
-          npm run db:studio
           npm run build
          
 
