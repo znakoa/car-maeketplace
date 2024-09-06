@@ -1,4 +1,5 @@
 import Search from './Search'
+import tesla from '@/assets/tesla.png'
 
 function Hero() {
   return (
@@ -9,7 +10,7 @@ function Hero() {
 
         <Search />
 
-        <img src="/car-maeketplace/assets/tesla.png" alt="" />
+        <img src={tesla} alt="" />
       </div>
     </div>
   )
