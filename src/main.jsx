@@ -45,7 +45,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: '/car-maeketplace', // 添加统一前缀
+    basename: '/car-maeketplace',
   }
 )
 // Import your publishable key
