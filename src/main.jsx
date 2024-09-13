@@ -44,9 +44,6 @@ const router = createBrowserRouter(
       element: <ListDetails />,
     },
   ],
-  {
-    basename: '/car-maeketplace', // 添加统一前缀
-  }
 )
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
